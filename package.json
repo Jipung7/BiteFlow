@@ -12,6 +12,16 @@
   "bugs": {
     "url": "https://github.com/Jipung7/biteflow/issues"
   },
+  "funding": [
+    {
+      "type": "ko-fi",
+      "url": "https://ko-fi.com/jipung"
+    },
+    {
+      "type": "custom",
+      "url": "https://saweria.co/jipung"
+    }
+  ],
   "scripts": {
     "check": "node scripts/check-syntax.js",
     "build:zip": "node scripts/build-zip.js",
