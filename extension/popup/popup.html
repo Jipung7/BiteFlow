@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    
+    <!-- Header Minimalis -->
+    <header class="header">
+      <div class="logo-box">
+        <div class="logo-icon">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <span class="logo-text">BiteFlow</span>
+      </div>
+      <span class="version-tag">v1.0.0</span>
+    </header>
+
+    <!-- Tombol Rekam Utama -->
+    <div class="action-section">
+      <button id="btn-start" class="btn-record">
+        <span class="record-dot"></span>
+        <span id="btn-text">Mulai Rekam Layar</span>
+      </button>
+      <span class="duration-badge">Maksimal 60 Detik</span>
+    </div>
+
+    <!-- Pilihan Pengaturan Ringkas -->
+    <div class="options-box">
+      <label class="option-row">
+        <span>Rekam Mikrofon</span>
+        <input type="checkbox" id="toggle-audio" class="checkbox">
+      </label>
+      <label class="option-row">
+        <span>Sorot Klik Mouse</span>
+        <input type="checkbox" id="toggle-highlight" checked class="checkbox">
+      </label>
+    </div>
+
+    <!-- Riwayat Rekaman Terakhir -->
+    <div class="history-section">
+      <div class="history-header">
+        <span>REKAMAN TERAKHIR</span>
+        <button id="btn-clear-history" class="btn-clear-history" title="Hapus seluruh riwayat dari komputer">Hapus Semua</button>
+      </div>
+      <div id="history-list" class="history-list">
+        <div class="empty-state">Belum ada rekaman tersimpan.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

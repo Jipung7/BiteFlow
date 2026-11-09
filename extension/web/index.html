@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BiteFlow — Pembuat Panduan Layar Singkat & Interaktif</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #fafafa;
+      color: #18181b;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding: 0 20px;
+    }
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 60px 0 80px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .logo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: #ffffff;
+      border: 1px solid #e4e4e7;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #27272a;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+    .logo-icon {
+      width: 18px;
+      height: 18px;
+      background: #18181b;
+      color: #fff;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    h1 {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -0.8px;
+      color: #09090b;
+      margin-bottom: 16px;
+      line-height: 1.25;
+    }
+    p.lead {
+      font-size: 17px;
+      color: #71717a;
+      max-width: 620px;
+      margin: 0 auto 32px;
+    }
+    .action-group {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .btn-primary {
+      background: #18181b;
+      color: #ffffff;
+      border: 1px solid #18181b;
+    }
+    .btn-primary:hover {
+      background: #27272a;
+    }
+    .btn-secondary {
+      background: #ffffff;
+      color: #27272a;
+      border: 1px solid #e4e4e7;
+    }
+    .btn-secondary:hover {
+      background: #f4f4f5;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 48px;
+    }
+    .feature-card {
+      background: #ffffff;
+      border: 1px solid #e4e4e7;
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .feature-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #18181b;
+      margin-bottom: 8px;
+    }
+    .feature-desc {
+      font-size: 13px;
+      color: #71717a;
+      line-height: 1.5;
+    }
+    .dropzone-box {
+      background: #ffffff;
+      border: 2px dashed #d4d4d8;
+      border-radius: 14px;
+      padding: 40px 20px;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .dropzone-box:hover {
+      border-color: #a1a1aa;
+    }
+    .dropzone-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #18181b;
+      margin-bottom: 6px;
+    }
+    .dropzone-desc {
+      font-size: 12px;
+      color: #71717a;
+      margin-bottom: 16px;
+    }
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: #a1a1aa;
+      border-top: 1px solid #e4e4e7;
+      padding-top: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header class="header">
+      <div class="logo-badge">
+        <div class="logo-icon">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        BiteFlow Web Engine
+      </div>
+      <h1>Rekam Alur Kerja 30 Detik.<br>Ubah Menjadi Panduan Interaktif.</h1>
+      <p class="lead">
+        Gabungan video ringkas sinkron dengan langkah bernomor, auto-zoom titik klik mouse, dan sensor privasi waktu.
+      </p>
+
+      <div class="action-group">
+        <a href="./v/?demo=1" class="btn btn-primary">
+          Buka Demo Interaktif
+        </a>
+        <a href="#dropzone" class="btn btn-secondary">
+          Buka Berkas Ekspor Lokal
+        </a>
+      </div>
+    </header>
+
+    <div class="card-grid">
+      <div class="feature-card">
+        <div class="feature-title">Auto-Zoom Otomatis</div>
+        <div class="feature-desc">Kamera memusatkan pandangan secara dinamis 1.6x ke koordinat klik tanpa menyunting manual satu detik pun.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">Sensor Privasi (Blur Waktu)</div>
+        <div class="feature-desc">Lindungi password, nomor kartu, atau email sensitif dengan kotak blur yang bisa diatur durasi tampilnya.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">Retensi 7 Hari Otomatis</div>
+        <div class="feature-desc">Tautan publik kedaluwarsa setelah 7 hari. Data tersimpan bersih dan menjaga privasi alur kerja Anda.</div>
+      </div>
+    </div>
+
+    <!-- Dropzone untuk membuka berkas export mandiri -->
+    <div id="dropzone" class="dropzone-box">
+      <div class="dropzone-title">Punya berkas .html atau .json dari BiteFlow?</div>
+      <div class="dropzone-desc">Pilih berkas dari komputer Anda untuk diputar langsung di antarmuka ini.</div>
+      <input type="file" id="file-input" accept=".html,.json" style="display: none;">
+      <button class="btn btn-secondary" onclick="document.getElementById('file-input').click()">
+        Pilih Berkas
+      </button>
+    </div>
+
+    <footer>
+      BiteFlow — Dirancang untuk pekerja digital, edukasi, dan dokumentasi operasional ringkas.
+    </footer>
+  </div>
+
+  <script>
+    const fileInput = document.getElementById('file-input');
+    fileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      if (file.name.endsWith('.html')) {
+        const url = URL.createObjectURL(file);
+        window.open(url, '_blank');
+      } else if (file.name.endsWith('.json')) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          try {
+            const data = JSON.parse(event.target.result);
+            const base64 = btoa(unescape(encodeURIComponent(JSON.stringify(data))));
+            window.location.href = `./v/#data=${base64}`;
+          } catch (err) {
+            alert('Format berkas JSON tidak valid.');
+          }
+        };
+        reader.readAsText(file);
+      }
+    });
+  </script>
+</body>
+</html>

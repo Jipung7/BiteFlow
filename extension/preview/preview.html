@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BiteFlow — Hasil Panduan Layar</title>
+  <link rel="stylesheet" href="preview.css">
+</head>
+<body>
+  
+  <header class="navbar">
+    <div class="nav-content">
+      <div class="nav-left">
+        <div class="nav-logo">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <span class="nav-title">BiteFlow</span>
+      </div>
+
+      <div class="nav-actions">
+        <button id="btn-delete-record" class="btn btn-danger" title="Hapus rekaman ini dari penyimpanan komputer">
+          Hapus Rekaman
+        </button>
+        <button id="btn-download-video" class="btn btn-secondary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+          </svg>
+          Unduh Video (.webm)
+        </button>
+        <button id="btn-download-html" class="btn btn-secondary" title="Kirim berkas ini via WhatsApp/Email agar bisa dibuka langsung di HP">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/>
+          </svg>
+          Simpan Berkas Mandiri (.html)
+        </button>
+        <button id="btn-share-link" class="btn btn-share" title="Buat tautan publik yang dapat dibagikan dengan masa aktif 7 hari">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+          Bagikan Tautan (7 Hari)
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-container">
+    
+    <!-- Meta Informasi -->
+    <div class="meta-section">
+      <div class="meta-badges">
+        <span id="meta-duration" class="badge">00:00</span>
+        <span class="dot">•</span>
+        <span id="meta-date" class="meta-text">Baru saja</span>
+      </div>
+      <h1 id="meta-title" class="title">Panduan Layar</h1>
+    </div>
+
+    <!-- Tampilan Pemutar & Langkah -->
+    <div class="content-grid">
+      
+      <!-- Sisi Kiri: Video Player -->
+      <div class="video-container">
+        <div class="player-top-bar">
+          <span class="player-status-tag">Pemutar Sinkron</span>
+          <div class="player-controls-group">
+            <button id="btn-toggle-blur" class="btn-toggle" title="Tarik kotak di atas video untuk menyensor area sensitif">
+              <span class="toggle-indicator"></span>
+              <span id="blur-toggle-text">+ Sensor Privasi (Blur)</span>
+            </button>
+            <button id="btn-toggle-zoom" class="btn-toggle active" title="Nyalakan atau matikan efek zoom otomatis saat klik mouse">
+              <span class="toggle-indicator"></span>
+              <span id="zoom-toggle-text">Auto-Zoom: Aktif</span>
+            </button>
+          </div>
+        </div>
+        <div class="video-wrapper" id="video-wrapper">
+          <!-- Stage pemutar: membungkus video, kotak blur, dan overlay gambar ke dalam satu matriks koordinat yang identik -->
+          <div id="video-stage" class="video-stage">
+            <video id="player-video" controls playsinline preload="auto"></video>
+            <div id="click-marker" class="click-marker hidden"></div>
+            <div id="blur-container" class="blur-container"></div>
+            <div id="blur-draw-overlay" class="blur-draw-overlay hidden">
+              <div id="blur-selection-box" class="blur-selection-box hidden"></div>
+            </div>
+          </div>
+          <div id="video-error-box" class="video-error hidden">
+            <p>Gagal memutar video secara langsung. Silakan gunakan tombol "Unduh Video" di atas.</p>
+          </div>
+        </div>
+
+        <!-- Panel Kontrol Durasi Sensor Privasi -->
+        <div id="blur-list-section" class="blur-list-section hidden">
+          <div class="blur-list-header">
+            <div>
+              <span class="blur-list-title">DURASI SENSOR PRIVASI</span>
+              <span class="blur-list-hint">• Sensor otomatis hilang saat durasi selesai</span>
+            </div>
+            <span id="blur-count-badge" class="blur-count-badge">0 Area</span>
+          </div>
+          <div id="blur-items-list" class="blur-items-list">
+            <!-- Diisi otomatis oleh JavaScript -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Sisi Kanan: Kartu Langkah -->
+      <div class="steps-container">
+        <div class="steps-header">
+          <div>
+            <span class="steps-title">LANGKAH KERJA</span>
+            <span class="steps-hint">• Klik teks untuk menyunting</span>
+          </div>
+          <button id="btn-add-step" class="btn-text-action" title="Tambahkan langkah baru pada detik video saat ini">
+            + Tambah Langkah
+          </button>
+        </div>
+        <div id="steps-list" class="steps-list">
+          <!-- Diisi otomatis oleh JavaScript -->
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Modal Bagikan Tautan Publik (7 Hari) -->
+  <div id="share-modal" class="modal-backdrop hidden">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">Bagikan Tautan Panduan Layar</h3>
+        <button id="btn-close-modal" class="btn-close-modal" aria-label="Tutup">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div id="burnin-notice" class="modal-alert hidden">
+          <span class="modal-alert-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0110 0v4"></path>
+            </svg>
+          </span>
+          <div>
+            <strong>Sensor Privasi Terdeteksi</strong>
+            <p>Untuk keamanan maksimal, Anda dapat membakar sensor langsung ke piksel video sehingga informasi rahasia terhapus permanen dan tidak bisa diintip lewat inspect element.</p>
+          </div>
+        </div>
+
+        <div id="burnin-progress-wrap" class="burnin-progress-wrap hidden">
+          <div class="progress-label">
+            <span>Memproses video bebas intip...</span>
+            <span id="burnin-progress-pct">0%</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div id="burnin-progress-fill" class="progress-bar-fill" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <div class="share-url-group">
+          <label class="input-label" for="share-url-input">Tautan Publik (Kedaluwarsa dalam 7 Hari):</label>
+          <div class="url-input-wrap">
+            <input type="text" id="share-url-input" class="url-input" readonly placeholder="Menyiapkan tautan...">
+            <button id="btn-copy-share-url" class="btn btn-primary">Salin Tautan</button>
+          </div>
+        </div>
+
+        <div class="share-info-list">
+          <div class="share-info-item">
+            <span class="info-dot">•</span>
+            <span>Masa aktif 7 hari (terhapus otomatis setelah batas waktu selesai).</span>
+          </div>
+          <div class="share-info-item">
+            <span class="info-dot">•</span>
+            <span>Bisa dibuka langsung di ponsel, tablet, atau komputer tanpa perlu login.</span>
+          </div>
+          <div id="share-sensor-status" class="share-info-item hidden">
+            <span class="info-dot">•</span>
+            <span id="share-sensor-text">Sensor privasi permanen (piksel asli telah dihancurkan).</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button id="btn-bake-sensor" class="btn btn-secondary hidden">Bakar Sensor Permanen</button>
+        <button id="btn-open-share-url" class="btn btn-primary" disabled>Buka di Tab Baru</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="preview.js"></script>
+</body>
+</html>

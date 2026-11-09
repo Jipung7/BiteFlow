@@ -1,0 +1,129 @@
+/* BiteFlow Floating Recording HUD Styles */
+#biteflow-floating-hud {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2147483647; /* Berada di atas seluruh elemen web */
+  background-color: #18181b;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 12px;
+  user-select: none;
+  animation: biteflow-slide-up 0.25s ease-out;
+  border: 1px solid #27272a;
+}
+
+@keyframes biteflow-slide-up {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 15px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.biteflow-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.biteflow-rec-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #ef4444;
+  border-radius: 50%;
+  animation: biteflow-blink 1s infinite;
+}
+
+@keyframes biteflow-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.biteflow-timer {
+  font-family: monospace;
+  font-weight: 600;
+  color: #f4f4f5;
+}
+
+.biteflow-limit {
+  color: #71717a;
+  font-size: 11px;
+}
+
+.biteflow-divider {
+  width: 1px;
+  height: 14px;
+  background-color: #3f3f46;
+}
+
+.biteflow-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.biteflow-btn-finish {
+  background-color: #ffffff;
+  color: #18181b;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 7px;
+  font-weight: 600;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.biteflow-btn-finish:hover {
+  background-color: #f4f4f5;
+}
+
+.biteflow-btn-cancel {
+  background: transparent;
+  color: #a1a1aa;
+  border: none;
+  font-size: 11px;
+  cursor: pointer;
+  padding: 4px 6px;
+}
+
+.biteflow-btn-cancel:hover {
+  color: #ffffff;
+}
+
+/* Click Highlight Ripple */
+.biteflow-click-ripple {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2147483646;
+  border: 2px solid #ef4444;
+  background-color: rgba(239, 68, 68, 0.15);
+  animation: biteflow-ripple-expand 0.4s ease-out forwards;
+}
+
+@keyframes biteflow-ripple-expand {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    width: 36px;
+    height: 36px;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+}

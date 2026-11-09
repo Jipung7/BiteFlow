@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BiteFlow Viewer — Panduan Interaktif</title>
+  <link rel="stylesheet" href="../css/viewer.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navigasi Publik Bersih (Read-Only) -->
+  <header class="navbar">
+    <div class="nav-content">
+      <div class="nav-brand">
+        <div class="nav-logo">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <span class="nav-title">BiteFlow</span>
+      </div>
+
+      <div class="nav-actions">
+        <button id="btn-download-video" class="btn btn-secondary" title="Unduh salinan video ke perangkat Anda">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+          </svg>
+          Unduh Video
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner Masa Berlaku (7-Day Expiry Notice) -->
+  <div id="expiry-banner" class="expiry-banner hidden">
+    <span class="expiry-icon">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="16" x2="12" y2="12"></line>
+        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+      </svg>
+    </span>
+    <span id="expiry-text">Tautan ini tersedia sementara. Berkas akan terhapus otomatis setelah 7 hari.</span>
+  </div>
+
+  <main class="main-container">
+
+    <!-- Header Dokumen -->
+    <div class="header-section">
+      <div class="meta-row">
+        <span id="meta-duration" class="meta-badge">00:00</span>
+        <span class="meta-dot">•</span>
+        <span id="meta-author" class="meta-text">Dipublikasikan via BiteFlow</span>
+      </div>
+      <h1 id="meta-title" class="document-title">Memuat panduan...</h1>
+    </div>
+
+    <!-- Tata Letak Dua Kolom Responsif (Video di Kiri, Langkah di Kanan) -->
+    <div class="viewer-grid">
+
+      <!-- Kolom Kiri: Pemutar Video -->
+      <div class="player-column">
+        <div class="player-top-bar">
+          <span class="player-badge">Mode Penonton</span>
+          <button id="btn-toggle-zoom" class="btn-toggle active" title="Nyalakan atau matikan efek zoom otomatis saat klik mouse">
+            <span class="toggle-indicator"></span>
+            <span id="zoom-toggle-text">Auto-Zoom: Aktif</span>
+          </button>
+        </div>
+
+        <div class="video-wrapper" id="video-wrapper">
+          <div id="video-stage" class="video-stage">
+            <video id="player-video" controls playsinline preload="auto"></video>
+            <div id="click-marker" class="click-marker hidden"></div>
+            <div id="blur-container" class="blur-container"></div>
+          </div>
+          <div id="video-error-box" class="video-error-box hidden">
+            <p id="video-error-text">Video sedang dimuat...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kolom Kanan: Langkah Kerja Interaktif -->
+      <div class="steps-column">
+        <div class="steps-header">
+          <span class="steps-title">LANGKAH KERJA</span>
+          <span class="steps-hint">Klik langkah untuk melompat video</span>
+        </div>
+
+        <div id="steps-list" class="steps-list">
+          <div class="steps-loading">Memuat langkah-langkah kerja...</div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    Dibuat dengan BiteFlow — Dokumentasi alur kerja asinkron yang ringkas dan mandiri.
+  </footer>
+
+  <script src="../demo/demo-data.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/viewer.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+name: Validate & Package Extension
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  validate-and-pack:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Validate JavaScript Syntax
+        run: node scripts/check-syntax.js
+
+      - name: Package Extension ZIP
+        run: |
+          mkdir -p dist
+          cd extension && zip -r ../dist/biteflow-extension-v1.0.0.zip ./*
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: biteflow-extension-v1.0.0
+          path: dist/biteflow-extension-v1.0.0.zip

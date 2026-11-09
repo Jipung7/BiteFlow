@@ -1,0 +1,30 @@
+{
+  "name": "biteflow",
+  "version": "1.0.0",
+  "description": "Transform 30-60s screen recordings into bite-sized interactive video guides with auto-zoom and time-ranged privacy blur.",
+  "author": "Jipung (Lone Steed Studio)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jipung7/biteflow.git"
+  },
+  "homepage": "https://github.com/Jipung7/biteflow#readme",
+  "bugs": {
+    "url": "https://github.com/Jipung7/biteflow/issues"
+  },
+  "scripts": {
+    "check": "node scripts/check-syntax.js",
+    "build:zip": "node scripts/build-zip.js",
+    "icons": "node scripts/create-icons.js"
+  },
+  "keywords": [
+    "chrome-extension",
+    "screen-recorder",
+    "documentation",
+    "interactive-guide",
+    "auto-zoom",
+    "privacy-blur",
+    "sop"
+  ],
+  "private": true
+}
